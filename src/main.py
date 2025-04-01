@@ -1,4 +1,4 @@
-from src.function import simulate_games
+from function import simulate_games
 
 rounds = [
 {
