@@ -43,22 +43,21 @@ def  show_ranking(stats):
      
 def simulate_games(rounds):
     """Simula el juego y calcula las estadísticas por ronda"""
-    players = list(rounds[0].keys())                    #hago una lista de jugadores
-    stats = start_count (players)                       #invoco a la función que me va a ir calculando los puntujes por ronda 
+    players = list(rounds[0].keys())                    
+    stats = start_count (players)                        
     
-    for i, round in enumerate(rounds, 1):              #itero cada una de las rondas
+    for i, round in enumerate(rounds, 1):              
         print(f"\n--- Ronda {i} ---")
-        round_scores = {}                              #inicializo el diccionario q me va a guardar jugador/puntaje  
+        round_scores = {}                                
         
-        for player in players:                         #itero por jugador en la ronda i 
-            data = round[player]                       #data guarda en un diccionario los valores en la ronda i del jugador player
-            points = calculate_points_round(data)      #calcula el puntaje del jugador player en la ronda i
-            round_scores[player] = points              #guardo el puntaje que obtuvo el jugador player en la ronda i, es un dicc donde  las claves son nombres de jugadores y los valores son sus puntajes en esa ronda
-            sum_points (stats, player, data['kills'], data['assists'], data['deaths'], points) #invoco la función que me va a ir actualizando el diccionario start
-            
-        mvp, points_mvp = define_mvp(round_scores)    #Esto es para calcular el mejor jugador del partido, la función me devuelve una tupla (player, points).
-        stats[mvp]['mvp_count'] += 1                  # cuanta las veces que un jugador salio mvp
-        print(f" MVP de la Ronda: {mvp} (Puntos: {points_mvp})")             #imprime el mvp y su puntaje
+        for player in players:                          
+            data = round[player]                       
+            points = calculate_points_round(data)      
+            round_scores[player] = points              
+            sum_points (stats, player, data['kills'], data['assists'], data['deaths'], points)             
+        mvp, points_mvp = define_mvp(round_scores)    
+        stats[mvp]['mvp_count'] += 1                  
+        print(f" MVP de la Ronda: {mvp} (Puntos: {points_mvp})")            
         
         show_ranking(stats)      
     
