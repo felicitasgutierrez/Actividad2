@@ -14,25 +14,32 @@ https://github.com/felicitasgutierrez/Actividad2
 
 2. *Crea un entorno virtual*:
 Es recomendable usar un entorno virtual para instalar las dependencias del proyecto. Para eso ejecuta:
+
 python -m venv venv
-si no funciona proba con py -m venv venv
+
+si no funciona proba con: py -m venv venv
 
 3. *Activa el entorno virtual*:
     - En Windows:
         Venv/Script/Activate
-    - En Mac/Linux
+    - En Mac/Linux: 
         source venv/bin/activate
 
 4. *Instala las dependencias:* 
 Una vez activado el entorno virtual, instala las dependencias necesarias ejecutando:
+
 pip install -r requirements.txt
 
 5. *Ejecuta la aplicacion*: 
 Para poder correr el proyecto, ejecuta el archivo principal
+
 python src/main.py   
-si no funciona proba con py src/main.py 
+
+si no funciona proba con: py src/main.py 
 
 ## Notas Adicionales 
 Si queres usar Jupyter Notebook para ejecutar el archivo interactico, asegurate de que este instalado con el comando 
+
 pip install notebook
+
 Luego debes abrir el archivo Ej10.ipynb
