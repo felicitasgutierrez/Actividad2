@@ -40,7 +40,18 @@ def  show_ranking(stats):
     sorted_players = sorted(stats.items(), key=lambda x: x[1]['total_points'], reverse=True)
     for player, data in sorted_players:
         print(f"{player.ljust(8)} | {str(data['kills']).ljust(5)} | {str(data['assists']).ljust(11)} | {str(data['deaths']).ljust(7)} | {str(data['mvp_count']).ljust(4)} | {data['total_points']}")
-     
+
+def determine_best_player(stats):
+    """Determina el mejor jugador del partido."""
+    best_player = max(stats.items(), key=lambda x: x[1]['total_points'])
+    return best_player
+
+def show_mvp_counts(stats):
+    """Muestra la cantidad de MVPs por jugador."""
+    print("\nCantidad de MVPs por jugador:")
+    for player, data in stats.items():
+        print(f"{player}: {data['mvp_count']} MVPs")
+
 def simulate_games(rounds):
     """Simula el juego y calcula las estadísticas por ronda"""
     players = list(rounds[0].keys())                    
@@ -58,7 +69,9 @@ def simulate_games(rounds):
         mvp, points_mvp = define_mvp(round_scores)    
         stats[mvp]['mvp_count'] += 1                  
         print(f" MVP de la Ronda: {mvp} (Puntos: {points_mvp})")            
-        
-        show_ranking(stats)      
+        show_ranking(stats)    
+    best_player, best_stats = determine_best_player(stats)
+    print(f"\n MEJOR JUGADOR DEL PARTIDO: {best_player} (Puntos Totales: {best_stats['total_points']})")
+    show_mvp_counts(stats)  
     
     return stats
